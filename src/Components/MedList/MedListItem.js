@@ -14,6 +14,7 @@ function MedListItem(props) {
         className=" align-self-center btn btn-sm btn-success fw-semibold ms-auto"
         onClick={(e) => {
           if (e.target.innerHTML === "View Cart") {
+            context.openCart();
             return;
           }
           context.addCartList(props.data);
@@ -28,7 +29,7 @@ function MedListItem(props) {
           context.removeMedList(props.data.id);
         }}
       >
-        X
+        Remove
       </button>
     </li>
   );

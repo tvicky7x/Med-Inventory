@@ -9,6 +9,9 @@ const cartContext = React.createContext({
   removeMedList: (id) => {},
   cartList: [],
   addCartList: (data) => {},
+  removeCartList: () => {},
+  changeQuantity: () => {},
+  printBill: () => {},
 });
 
 export default cartContext;

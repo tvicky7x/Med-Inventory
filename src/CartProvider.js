@@ -21,6 +21,12 @@ function CartProvider(props) {
   }
 
   function removeMedList(id) {
+    alert("Are you Sure?");
+    setCartList((oldCartList) => {
+      return oldCartList.filter((item) => {
+        return item.id !== id;
+      });
+    });
     setMedList((oldMedList) => {
       return oldMedList.filter((item) => {
         return item.id !== id;
@@ -35,6 +41,46 @@ function CartProvider(props) {
     });
   }
 
+  function removeCartList(id) {
+    setMedList((oldMedList) => {
+      return oldMedList.map((item) => {
+        if (item.id === id) {
+          item.cart = false;
+        }
+        return item;
+      });
+    });
+    setCartList((oldCartList) => {
+      return oldCartList.filter((item) => {
+        return item.id !== id;
+      });
+    });
+  }
+
+  function changeQuantity(id, value) {
+    if (value > 1) {
+      setCartList((oldCartList) => {
+        return oldCartList.map((item) => {
+          if (item.id === id) {
+            item.quantity = value;
+          }
+          return item;
+        });
+      });
+    }
+  }
+
+  function printBill(id) {
+    console.log("Printing Bill...");
+    setMedList((oldMedList) => {
+      return oldMedList.map((item) => {
+        item.cart = false;
+        return item;
+      });
+    });
+    setCartList([]);
+  }
+
   return (
     <cartContext.Provider
       value={{
@@ -46,6 +92,9 @@ function CartProvider(props) {
         removeMedList: removeMedList,
         cartList: cartList,
         addCartList: addCartList,
+        removeCartList: removeCartList,
+        changeQuantity: changeQuantity,
+        printBill: printBill,
       }}
     >
       {props.children}

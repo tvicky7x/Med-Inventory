@@ -12,7 +12,7 @@ function MedList() {
       <div className=" card-body">
         <ul className=" list-group">
           {context.medList.map((item) => {
-            return <MedListItem data={item} />;
+            return <MedListItem data={item} key={Math.random().toString()} />;
           })}
         </ul>
       </div>
