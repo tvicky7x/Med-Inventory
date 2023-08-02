@@ -24,7 +24,7 @@ function Cart() {
               <h4 className=" mt-1">Cart</h4>
             </div>
             <div className=" card-body">
-              {context.cartList.length == 0 && (
+              {context.cartList.length === 0 && (
                 <div className=" bg-success-subtle p-3 rounded-2 text-center">
                   <h4>There is nothing is Cart</h4>
                   <button
