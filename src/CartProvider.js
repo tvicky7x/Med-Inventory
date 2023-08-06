@@ -45,6 +45,7 @@ function CartProvider(props) {
     setMedList((oldMedList) => {
       return oldMedList.map((item) => {
         if (item.id === id) {
+          item.quantity = 1;
           item.cart = false;
         }
         return item;
@@ -74,6 +75,7 @@ function CartProvider(props) {
     console.log("Printing Bill...");
     setMedList((oldMedList) => {
       return oldMedList.map((item) => {
+        item.quantity = 1;
         item.cart = false;
         return item;
       });
